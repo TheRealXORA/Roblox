@@ -69,7 +69,7 @@ end)
     --
     if getgenv().valiansh == true then
                         game.StarterGui:SetCore("SendNotification", {
-                   Title = "klex#0008 l Private",
+                   Title = "",
                    Text = "Already Loaded!",
                    Duration = 5
         
@@ -96,7 +96,7 @@ end)
 
 				Notify({
 					Description = "Target: "..tostring(Plr.Character.Humanoid.DisplayName);
-					Title = "klex#0008 l Private";
+					Title = "";
 					Duration = 5;
 					});  
 
@@ -110,13 +110,13 @@ end)
         if getgenv().NotifMode then
 			Notify({
 				Description = "Unlocked";
-				Title = "klex#0008 l Private";
+				Title = "";
 				Duration = 5;
 				});  
            elseif getgenv().Target == false then
 			Notify({
 				Description = "Target isn't enabled";
-				Title = "klex#0008 l Private";
+				Title = "";
 				Duration = 5;
 				}); 
                
