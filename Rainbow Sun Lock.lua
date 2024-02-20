@@ -1,8 +1,10 @@
 --[[
 
-this script wasn't protected because whoever made this lock script the script is barely readable 
-and so much erorrs i had to fucking fix and all other fucking locks use this same shitty script 
-u can barely read anything 
+This script wasn't protected because it was made very hard to read by the person who created it. 
+I had to fix a lot of mistakes, 
+and all other locks use this same bad script. It's very hard to understand.
+
+modified by me / aka TheRealX_ORA on YT
 
 -TheRealX_ORA
 ]]--
