@@ -1,3 +1,12 @@
+--[[
+
+this script wasn't protected because whoever made this lock script the script is barely readable 
+and so much erorrs i had to fucking fix and all other fucking locks use this same shitty script 
+u can barely read anything 
+
+-TheRealX_ORA
+]]--
+
 Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro2/main/ui2"))()
 local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro/main/ui"))()
 NotifyLib.prompt('Rainbow Sun', 'Modified & Created By: TheRealX_ORA on YT', 5)
