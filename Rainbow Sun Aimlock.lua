@@ -297,40 +297,72 @@ function getClosestPlayerToCursor()
     return closestPlayer		
 end
 
-local lastNotificationTime = 0 -- Track the last time a notification was sent
+local lastNotificationTime = 0
+local pingvalue = nil;
+local split = nil;
+local ping = nil;
 
-game:GetService("RunService").Stepped:connect(function(deltaTime)
+local function generatePredictionValue(ping)
+    local baseValues = {
+        {maxPing = 10, base = 0.10},
+        {maxPing = 30, base = 0.11},
+        {maxPing = 50, base = 0.12},
+        {maxPing = 70, base = 0.13},
+        {maxPing = 90, base = 0.14},
+        {maxPing = 110, base = 0.15},
+        {maxPing = 130, base = 0.16},
+        {maxPing = 150, base = 0.17},
+        {maxPing = 170, base = 0.18},
+        {maxPing = 190, base = 0.19},
+        {maxPing = 210, base = 0.20},
+        {maxPing = 230, base = 0.21},
+        {maxPing = 250, base = 0.22},
+        -- Add more if needed
+    }
+
+    local predictionGenerator = 0.22
+    for _, range in ipairs(baseValues) do
+        if ping <= range.maxPing then
+            predictionGenerator = range.base
+            break
+        end
+    end
+
+    local numberOfDigits = math.random(12, 15)
+    predictionGenerator = tostring(predictionGenerator)
+    for _ = 1, numberOfDigits do
+        local randomDigit = tostring(math.random(0, 9))
+        predictionGenerator = predictionGenerator .. randomDigit
+    end
+
+    return predictionGenerator
+end
+
+local lastNotificationTime = 0
+game:GetService("RunService").Stepped:connect(function()
     if enabled and Plr.Character ~= nil and Plr.Character:FindFirstChild("HumanoidRootPart") then
         placemarker.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position + (Plr.Character.HumanoidRootPart.Velocity * accomidationfactor))
     else
         placemarker.CFrame = CFrame.new(0, 9999, 0)
     end
     if Settings.rewrittenmain.AUTOPRED == true then
-        pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-        split = string.split(pingvalue, '(')
-        ping = tonumber(split[1])
+        local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        local split = string.split(pingvalue, '(')
+        local ping = tonumber(split[1])
 
-        -- Simplified prediction adjustment based on ping
-        local baseValue = 0.085 -- Minimum prediction value for the lowest ping
-        local scale = 0.0007 -- Scale factor to adjust prediction based on ping
-        local maxPing = 10000 -- Maximum ping to consider for scaling
+        local predictionValue = generatePredictionValue(ping)
 
-        -- Calculate prediction value with linear scaling based on ping difference
-        local predictionValue = baseValue + math.clamp(ping, 0, maxPing) * scale
-
-        predictionValue = math.min(predictionValue, 0.16)
-
-        -- Check if 5 seconds have passed since the last notification
         if tick() - lastNotificationTime >= 5 then
             game.StarterGui:SetCore("SendNotification", {
                 Title = "Auto Prediction",
-                Text = "Prediction: "..tostring(predictionValue),
+                Text = "Prediction: "..predictionValue,
                 Duration = 2.5
             })
-            lastNotificationTime = tick() -- Update the last notification time
+            lastNotificationTime = tick()
         end
     end
 end)
+
 
 local mt = getrawmetatable(game)
 local old = mt.__namecall
