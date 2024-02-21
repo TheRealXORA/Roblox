@@ -320,7 +320,7 @@ local function generatePredictionValue(ping)
         -- Add more if needed
     }
 
-    local predictionGenerator = 0.22
+    local predictionGenerator = 0.225
     for _, range in ipairs(baseValues) do
         if ping <= range.maxPing then
             predictionGenerator = range.base
