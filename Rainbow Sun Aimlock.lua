@@ -118,7 +118,7 @@ end
 Settings = {   
     rewrittenmain = {
 		Enabled = true,
-		Key = "q",
+		Key = "q", -- change the key
 		DOT = true,
 		AIRSHOT = true,
         NOTIF = true,			
