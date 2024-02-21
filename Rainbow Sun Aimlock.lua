@@ -304,19 +304,19 @@ local ping = nil;
 
 local function generatePredictionValue(ping)
     local baseValues = {
-        {maxPing = 10, base = 0.10},
-        {maxPing = 30, base = 0.11},
-        {maxPing = 50, base = 0.12},
-        {maxPing = 70, base = 0.13},
-        {maxPing = 90, base = 0.14},
-        {maxPing = 110, base = 0.15},
-        {maxPing = 130, base = 0.16},
-        {maxPing = 150, base = 0.17},
-        {maxPing = 170, base = 0.18},
-        {maxPing = 190, base = 0.19},
-        {maxPing = 210, base = 0.20},
-        {maxPing = 230, base = 0.21},
-        {maxPing = 250, base = 0.22},
+        {maxPing = 10, base = 0.09},
+        {maxPing = 30, base = 0.10},
+        {maxPing = 50, base = 0.11},
+        {maxPing = 70, base = 0.12},
+        {maxPing = 90, base = 0.13},
+        {maxPing = 110, base = 0.14},
+        {maxPing = 130, base = 0.15},
+        {maxPing = 150, base = 0.16},
+        {maxPing = 170, base = 0.17},
+        {maxPing = 190, base = 0.18},
+        {maxPing = 210, base = 0.19},
+        {maxPing = 230, base = 0.20},
+        {maxPing = 250, base = 0.21},
         -- Add more if needed
     }
 
