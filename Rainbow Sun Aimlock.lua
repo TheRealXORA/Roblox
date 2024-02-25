@@ -7,11 +7,14 @@ and all other locks use this same bad script. It's very hard to understand.
 modified by me / aka TheRealX_ORA on YT
 
 -TheRealX_ORA
+
+UPDATE LOG: fix some bugs
+making my own aimlock after i make tpwalk v4 & camlock
 ]]--
 
 Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro2/main/ui2"))()
 local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro/main/ui"))()
-NotifyLib.prompt('Rainbow Sun', 'Modified & Created By: TheRealX_ORA on YT', 5)
+NotifyLib.prompt('Rainbow Sunshine', 'Modified & Created By: TheRealX_ORA on YT', 5)
 
 -- Service
 local UserInputService = game:GetService("UserInputService")
@@ -489,7 +492,7 @@ RunService.RenderStepped:Connect(function()
 	end
 end)
 
-NotifyLib.prompt('TheRealX_ORA', 'Loaded Rainbow Sun!', 5)
+NotifyLib.prompt('TheRealX_ORA', 'Loaded Rainbow Sunshine!', 5)
 
 -- DO NOT DELETE THIS:
 --[[
