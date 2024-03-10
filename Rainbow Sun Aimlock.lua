@@ -29,10 +29,10 @@ local isGamepadEnabled = UserInputService.GamepadEnabled
 
 if isTouchEnabled then
     
-    NotifyLib.prompt('Mobile Device Detected', 'Loading Q Tool..', 5)
+    NotifyLib.prompt('Mobile Device Detected', 'Loading V Tool..', 5)
     
     -- Key To Click
-    getgenv().keytoclick = "Q"
+    getgenv().keytoclick = "V"
 
     -- Tool
     local tool = Instance.new("Tool")
@@ -54,17 +54,17 @@ if isTouchEnabled then
         tool.Parent = player.Backpack
     end)
     
-    NotifyLib.prompt('Mobile Q Tool', 'Q Tool Has Successfully Loaded!', 5)
+    NotifyLib.prompt('Mobile V Tool', 'V Tool Has Successfully Loaded!', 5)
     
 elseif isMouseEnabled and isMouseEnabled then
-    NotifyLib.prompt('Pc Device Detected', 'Smite them with Q!', 5)
+    NotifyLib.prompt('Pc Device Detected', 'Smite them with V!', 5)
     
 elseif isGamepadEnabled and isTouchEnabled then
     
-    NotifyLib.prompt('Controller And Mobile Device Detected', 'Loading Q Tool..', 5)
+    NotifyLib.prompt('Controller And Mobile Device Detected', 'Loading V Tool..', 5)
     
     -- Key To Click
-    getgenv().keytoclick = "Q"
+    getgenv().keytoclick = "V"
 
     -- Tool
     local tool = Instance.new("Tool")
@@ -86,14 +86,14 @@ elseif isGamepadEnabled and isTouchEnabled then
         tool.Parent = player.Backpack
     end)
     
-    NotifyLib.prompt('Controller And Mobile Q Tool', 'Q Tool Has Successfully Loaded!', 5)
+    NotifyLib.prompt('Controller And Mobile V Tool', 'V Tool Has Successfully Loaded!', 5)
 
 elseif isMouseEnabled and isMouseEnabled and isTouchEnabled then
     
-    NotifyLib.prompt('Hybird Mobile Device Detected', 'Loading Q Tool..', 5)
+    NotifyLib.prompt('Hybird Mobile Device Detected', 'Loading V Tool..', 5)
     
     -- Key To Click
-    getgenv().keytoclick = "Q"
+    getgenv().keytoclick = "V"
 
     -- Tool
     local tool = Instance.new("Tool")
@@ -115,13 +115,13 @@ elseif isMouseEnabled and isMouseEnabled and isTouchEnabled then
         tool.Parent = player.Backpack
     end)
     
-    NotifyLib.prompt('Hybird Mobile Q Tool', 'Q Tool Has Successfully Loaded!', 5)
+    NotifyLib.prompt('Hybird Mobile V Tool', 'V Tool Has Successfully Loaded!', 5)
 end
 
 Settings = {   
     rewrittenmain = {
 		Enabled = true,
-		Key = "q", -- change the key
+		Key = "v", -- change the key
 		DOT = true,
 		AIRSHOT = true,
         NOTIF = true,			
