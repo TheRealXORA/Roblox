@@ -435,6 +435,26 @@ mt.__namecall = newcclosure(function(...)
                     args[3] = Plr.Character[SelectedPart].Position
                 end            
             end 
+            elseif args[2] == "MousePosUpdate" then
+            if Prediction == true then
+                if type(args[3]) == "table" then
+                    args[3] = {
+                        Plr.Character[SelectedPart].Position + (Plr.Character[SelectedPart].Velocity * PredictionValue)
+                        }
+                elseif type(args[3]) ~= "table" then
+                    args[3] = Plr.Character[SelectedPart].Position + (Plr.Character[SelectedPart].Velocity * PredictionValue)
+                end
+                    
+			else
+				if type(args[3]) == "table" then
+                    args[3] = {
+                        Plr.Character[SelectedPart].Position
+                        }
+                elseif type(args[3]) ~= "table" then
+                    args[3] = Plr.Character[SelectedPart].Position
+                end            
+            end
+                
         end	            
         return old(unpack(args))			
     end			     
