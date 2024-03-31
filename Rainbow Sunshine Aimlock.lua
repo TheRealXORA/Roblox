@@ -99,7 +99,7 @@ Settings = {
 		AIRSHOT = true,
         NOTIF = true,			
         AUTOPRED = true,			
-        FOV = math.huge, --- if u dont know what is math.huge let me tell you it is infinite ok? -TheRealX_ORA	
+        FOV = math.huge, -- if you dont know what is math.huge let me tell you it is infinite? -TheRealX_ORA	
     }
 }
 
