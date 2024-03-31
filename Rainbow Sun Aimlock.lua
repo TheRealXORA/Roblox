@@ -18,7 +18,7 @@ whoever skids script to leak them is a pooron thb😪
 join my discord fr fr discord.gg/iosexploiters
 
 extra: cleaned the script IM NOT MAKING IT SUPPORT OTHER GAMES HELL NO 
-bro i was abiut to make it support da fights and games that uses this remote function:
+bro i was about to make it support da fights and games that uses this remote function:
 local args = {
 [1] = "UpdateMousePos",
 [2] = {
