@@ -18,7 +18,15 @@ whoever skids script to leak them is a pooron thb😪
 join my discord fr fr discord.gg/iosexploiters
 
 extra: cleaned the script IM NOT MAKING IT SUPPORT OTHER GAMES HELL NO 
-
+bro i was abiut to make it support da fights and games that uses this remote function:
+local args = {
+[1] = "UpdateMousePos",
+[2] = {
+        ["MousePos"] = Vector3.new(-498.8055419921875, 4.6344757080078125, -852.712158203125),
+        ["Camera"] = Vector3.new(-498.8055419921875, 4.6344757080078125, -852.712158203125)
+      }
+}
+but i give up bro aint even my lock i only understand my scripts
 -TheRealX_ORA
 ]]--
 
