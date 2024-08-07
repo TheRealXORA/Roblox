@@ -1711,7 +1711,7 @@ NewGuiPart152.TextWrapped = true
 return NewGuiPart1
 end
 local D_E_X = CreateGui()
-D_E_X.Parent = game.Players.LocalPlayer.PlayerGui
+D_E_X.Parent = game:GetService("Players").LocalPlayer.PlayerGui
 spawn(function()
 	local Gui = D_E_X
 	
@@ -2010,7 +2010,7 @@ SaveMapName.Text = tostring(game.PlaceId).."MapCopy"
 SaveMapButton.MouseButton1Click:connect(function()
 	local copyWhat = {}
 
-	local copyGroup = Instance.new("Model",game.ReplicatedStorage)
+	local copyGroup = Instance.new("Model",game:GetService("ReplicatedStorage"))
 
 	local copyScripts = SaveMapSettings.SaveScripts
 
@@ -2037,7 +2037,7 @@ SaveMapButton.MouseButton1Click:connect(function()
 
 	function archivable(root)
 		for i,v in pairs(root:GetChildren()) do
-			if not game.Players:GetPlayerFromCharacter(v) then
+			if not game:GetService("Players"):GetPlayerFromCharacter(v) then
 				v.Archivable = true
 				archivable(v)
 			end
@@ -3508,7 +3508,7 @@ function GetFunctions()
 end
 
 function CreateInsertObjectMenu(choices, currentChoice, readOnly, onClick)
-	local mouse = game.Players.LocalPlayer:GetMouse()
+	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 	local totalSize = explorerPanel.Parent.AbsoluteSize.y
 	if #choices == 0 then return end
 	
@@ -3597,7 +3597,7 @@ function CreateInsertObjectMenu(choices, currentChoice, readOnly, onClick)
 end
 
 function CreateFunctionCallerMenu(choices, currentChoice, readOnly, onClick)
-	local mouse = game.Players.LocalPlayer:GetMouse()
+	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 	local totalSize = explorerPanel.Parent.AbsoluteSize.y
 	if #choices == 0 then return end
 	
@@ -3777,7 +3777,7 @@ function CreateRightClickMenuItem(text, onClick, insObj)
 end
 
 function CreateRightClickMenu(choices, currentChoice, readOnly, onClick)
-	local mouse = game.Players.LocalPlayer:GetMouse()
+	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 
 	local frame = Instance.new("Frame")	
 	frame.Name = "DropDown"
@@ -3859,7 +3859,7 @@ end
 
 function checkMouseInGui(gui)
 	if gui == nil then return false end
-	local plrMouse = game.Players.LocalPlayer:GetMouse()
+	local plrMouse = game:GetService("Players").LocalPlayer:GetMouse()
 	local guiPosition = gui.AbsolutePosition
 	local guiSize = gui.AbsoluteSize	
 	
@@ -4544,7 +4544,7 @@ function DestroyRightClick()
 end
 
 function rightClickMenu(sObj)
-	local mouse = game.Players.LocalPlayer:GetMouse()
+	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 	
 	currentRightClickMenu = CreateRightClickMenu(
 		{"Cut","Copy","Paste Into","Duplicate","Delete","Group","Ungroup","Select Children","Teleport To","Insert Part","Insert Object","View Script","Save Instance","Call Function","Call Remote"},
@@ -4639,7 +4639,7 @@ function rightClickMenu(sObj)
 				for i = 1,#list do
 					if list[i]:IsA("BasePart") then
 						pcall(function()
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = list[i].CFrame
+							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = list[i].CFrame
 						end)
 						break
 					end
@@ -4652,7 +4652,7 @@ function rightClickMenu(sObj)
 					pcall(function()
 						local newPart = Instance.new("Part")
 						newPart.Parent = list[i]
-						newPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.Head.Position) + Vector3.new(0,3,0)
+						newPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.Head.Position) + Vector3.new(0,3,0)
 						table.insert(insertedParts,newPart)
 					end)
 				end
@@ -7723,7 +7723,7 @@ local currentEditor = {
 }
 
 local userInput = game:GetService("UserInputService")
-local mouse = game.Players.LocalPlayer:GetMouse()
+local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 
 local topBar = top:WaitForChild("TopBar")
 local scriptBar = topBar:WaitForChild("ScriptBar")
@@ -8364,7 +8364,7 @@ local syntaxHighlightList = {
 
 function checkMouseInGui(gui)
 	if gui == nil then return false end
-	local plrMouse = game.Players.LocalPlayer:GetMouse()
+	local plrMouse = game:GetService("Players").LocalPlayer:GetMouse()
 	local guiPosition = gui.AbsolutePosition
 	local guiSize = gui.AbsoluteSize	
 	
