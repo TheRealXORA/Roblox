@@ -1,3 +1,4 @@
+--// Mobile Support Has Been Added By TheRealX_ORA \\--
 local DiscordLib = {}
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -14,8 +15,8 @@ pcall(function()
 	userinfo = HttpService:JSONDecode(readfile("discordlibinfo.txt"));
 end)
 
-pfp = userinfo["pfp"] or "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
-user =  userinfo["user"] or game.Players.LocalPlayer.Name
+pfp = userinfo["pfp"] or "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png"
+user =  userinfo["user"] or LocalPlayer.Name
 tag = userinfo["tag"] or tostring(math.random(1000,9999))
 
 local function SaveInfo()
@@ -83,7 +84,7 @@ end
 
 local Discord = Instance.new("ScreenGui")
 Discord.Name = "Discord"
-Discord.Parent = game.CoreGui
+Discord.Parent = Game:GetService("CoreGui")
 Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function DiscordLib:Window(text)
@@ -932,7 +933,7 @@ function DiscordLib:Window(text)
 		ResetBtn.TextSize = 13.000
 		
 		ResetBtn.MouseButton1Click:Connect(function()
-			pfp = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
+			pfp = "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png"
 			UserImage.Image = pfp 
 			UserPanelUserImage.Image = pfp
 			SaveInfo()
@@ -2439,17 +2440,18 @@ function DiscordLib:Window(text)
 					ValueLabel.Text = tostring(value)
 					pcall(callback, value)
 				end
-				Zip.InputBegan:Connect(
+				SliderFrame.InputBegan:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 							dragging = true
 							ValueBubble.Visible = true
+                            move(input)
 						end
 					end
 				)
-				Zip.InputEnded:Connect(
+				SliderFrame.InputEnded:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 							dragging = false
 							ValueBubble.Visible = false
 						end
@@ -2457,12 +2459,21 @@ function DiscordLib:Window(text)
 				)
 				game:GetService("UserInputService").InputChanged:Connect(
 				function(input)
-					if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+					if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 						move(input)
 					end
 				end
 				)
-				
+                
+                game:GetService("UserInputService").InputEnded:Connect(
+                function(input)
+                    if dragging and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+                        dragging = false
+                        ValueBubble.Visible = false
+                    end
+                end
+                )
+                
 				function SliderFunc:Change(tochange)
 					CurrentValueFrame.Size = UDim2.new((tochange or 0) / max, 0, 0, 8)
 					Zip.Position = UDim2.new((tochange or 0)/max, -6,-0.644999981, 0)
@@ -2976,7 +2987,7 @@ function DiscordLib:Window(text)
 
 				Color.InputBegan:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch then
 
 							if ColorInput then
 								ColorInput:Disconnect()
@@ -3005,7 +3016,7 @@ function DiscordLib:Window(text)
 
 				Color.InputEnded:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch then
 							if ColorInput then
 								ColorInput:Disconnect()
 							end
@@ -3015,7 +3026,7 @@ function DiscordLib:Window(text)
 
 				Hue.InputBegan:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch then
 
 
 							if HueInput then
@@ -3041,7 +3052,7 @@ function DiscordLib:Window(text)
 
 				Hue.InputEnded:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 or Enum.UserInputType.Touch then
 							if HueInput then
 								HueInput:Disconnect()
 							end
