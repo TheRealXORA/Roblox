@@ -1,4 +1,3 @@
---> Mobile Support By TheRealX_ORA <--
 local DiscordLib = {}
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -15,8 +14,8 @@ pcall(function()
 	userinfo = HttpService:JSONDecode(readfile("discordlibinfo.txt"));
 end)
 
-pfp = userinfo["pfp"] or "https://www.roblox.com/headshot-thumbnail/image?userId=".. game:GetService("Players").LocalPlayer.UserId .."&width=420&height=420&format=png"
-user =  userinfo["user"] or game:GetService("Players").LocalPlayer.Name
+pfp = userinfo["pfp"] or "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
+user =  userinfo["user"] or game.Players.LocalPlayer.Name
 tag = userinfo["tag"] or tostring(math.random(1000,9999))
 
 local function SaveInfo()
@@ -933,7 +932,7 @@ function DiscordLib:Window(text)
 		ResetBtn.TextSize = 13.000
 		
 		ResetBtn.MouseButton1Click:Connect(function()
-			pfp = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game:GetService("Players").LocalPlayer.UserId .."&width=420&height=420&format=png"
+			pfp = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
 			UserImage.Image = pfp 
 			UserPanelUserImage.Image = pfp
 			SaveInfo()
@@ -2292,171 +2291,188 @@ function DiscordLib:Window(text)
 				
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
-            function ChannelContent:Slider(text, min, max, start, callback)
-                local SliderFunc = {}
-                local dragging = false
-                local Slider = Instance.new("TextButton")
-                local SliderTitle = Instance.new("TextLabel")
-                local SliderFrame = Instance.new("Frame")
-                local SliderFrameCorner = Instance.new("UICorner")
-                local CurrentValueFrame = Instance.new("Frame")
-                local CurrentValueFrameCorner = Instance.new("UICorner")
-                local Zip = Instance.new("Frame")
-                local ZipCorner = Instance.new("UICorner")
-                local ValueBubble = Instance.new("Frame")
-                local ValueBubbleCorner = Instance.new("UICorner")
-                local SquareBubble = Instance.new("Frame")
-                local GlowBubble = Instance.new("ImageLabel")
-                local ValueLabel = Instance.new("TextLabel")
-            
-                Slider.Name = "Slider"
-                Slider.Parent = ChannelHolder
-                Slider.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
-                Slider.BorderSizePixel = 0
-                Slider.Position = UDim2.new(0, 0, 0.216560602, 0)
-                Slider.Size = UDim2.new(0, 401, 0, 38)
-                Slider.AutoButtonColor = false
-                Slider.Font = Enum.Font.Gotham
-                Slider.Text = ""
-                Slider.TextColor3 = Color3.fromRGB(255, 255, 255)
-                Slider.TextSize = 14.000
-            
-                SliderTitle.Name = "SliderTitle"
-                SliderTitle.Parent = Slider
-                SliderTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                SliderTitle.BackgroundTransparency = 1.000
-                SliderTitle.Position = UDim2.new(0, 5, 0, -4)
-                SliderTitle.Size = UDim2.new(0, 200, 0, 27)
-                SliderTitle.Font = Enum.Font.Gotham
-                SliderTitle.Text = text
-                SliderTitle.TextColor3 = Color3.fromRGB(127, 131, 137)
-                SliderTitle.TextSize = 14.000
-                SliderTitle.TextXAlignment = Enum.TextXAlignment.Left
-            
-                SliderFrame.Name = "SliderFrame"
-                SliderFrame.Parent = Slider
-                SliderFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-                SliderFrame.BackgroundColor3 = Color3.fromRGB(79, 84, 92)
-                SliderFrame.Position = UDim2.new(0.497999996, 0, 0.757000029, 0)
-                SliderFrame.Size = UDim2.new(0, 385, 0, 8)
-            
-                SliderFrameCorner.Name = "SliderFrameCorner"
-                SliderFrameCorner.Parent = SliderFrame
-            
-                CurrentValueFrame.Name = "CurrentValueFrame"
-                CurrentValueFrame.Parent = SliderFrame
-                CurrentValueFrame.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
-                CurrentValueFrame.Size = UDim2.new((start or 0) / max, 0, 0, 8)
-            
-                CurrentValueFrameCorner.Name = "CurrentValueFrameCorner"
-                CurrentValueFrameCorner.Parent = CurrentValueFrame
-            
-                Zip.Name = "Zip"
-                Zip.Parent = SliderFrame
-                Zip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                Zip.Position = UDim2.new((start or 0) / max, -6, -0.644999981, 0)
-                Zip.Size = UDim2.new(0, 20, 0, 20)
-                ZipCorner.CornerRadius = UDim.new(0, 3)
-                ZipCorner.Name = "ZipCorner"
-                ZipCorner.Parent = Zip
-            
-                ValueBubble.Name = "ValueBubble"
-                ValueBubble.Parent = Zip
-                ValueBubble.AnchorPoint = Vector2.new(0.5, 0.5)
-                ValueBubble.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
-                ValueBubble.Position = UDim2.new(0.5, 0, -1.00800002, 0)
-                ValueBubble.Size = UDim2.new(0, 36, 0, 21)
-                ValueBubble.Visible = false
-            
-                ValueBubbleCorner.CornerRadius = UDim.new(0, 3)
-                ValueBubbleCorner.Name = "ValueBubbleCorner"
-                ValueBubbleCorner.Parent = ValueBubble
-            
-                SquareBubble.Name = "SquareBubble"
-                SquareBubble.Parent = ValueBubble
-                SquareBubble.AnchorPoint = Vector2.new(0.5, 0.5)
-                SquareBubble.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
-                SquareBubble.BorderSizePixel = 0
-                SquareBubble.Position = UDim2.new(0.493000001, 0, 0.637999971, 0)
-                SquareBubble.Rotation = 45.000
-                SquareBubble.Size = UDim2.new(0, 19, 0, 19)
-            
-                GlowBubble.Name = "GlowBubble"
-                GlowBubble.Parent = ValueBubble
-                GlowBubble.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                GlowBubble.BackgroundTransparency = 1.000
-                GlowBubble.BorderSizePixel = 0
-                GlowBubble.Position = UDim2.new(0, -15, 0, -15)
-                GlowBubble.Size = UDim2.new(1, 30, 1, 30)
-                GlowBubble.ZIndex = 0
-                GlowBubble.Image = "rbxassetid://4996891970"
-                GlowBubble.ImageColor3 = Color3.fromRGB(15, 15, 15)
-                GlowBubble.ScaleType = Enum.ScaleType.Slice
-                GlowBubble.SliceCenter = Rect.new(20, 20, 280, 280)
-            
-                ValueLabel.Name = "ValueLabel"
-                ValueLabel.Parent = ValueBubble
-                ValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                ValueLabel.BackgroundTransparency = 1.000
-                ValueLabel.Size = UDim2.new(0, 36, 0, 21)
-                ValueLabel.Font = Enum.Font.Gotham
-                ValueLabel.Text = tostring(start and math.floor((start / max) * (max - min) + min) or 0)
-                ValueLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-                ValueLabel.TextSize = 10.000
-            
-                local function move(input)
-                    local pos = UDim2.new(
-                        math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1),
-                        -6,
-                        -0.644999981,
-                        0
-                    )
-                    local pos1 = UDim2.new(
-                        math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1),
-                        0,
-                        0,
-                        8
-                    )
-                    CurrentValueFrame.Size = pos1
-                    Zip.Position = pos
-                    local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min)
-                    ValueLabel.Text = tostring(value)
-                    pcall(callback, value)
-                end
-            
-                local function onInputChanged(input)
-                    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-                        move(input)
-                    end
-                end
-            
-                Zip.InputBegan:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                        dragging = true
-                        ValueBubble.Visible = true
-                        move(input)
-                    end
-                end)
-            
-                Zip.InputEnded:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                        dragging = false
-                        ValueBubble.Visible = false
-                    end
-                end)
-            
-                game:GetService("UserInputService").InputChanged:Connect(onInputChanged)
-            
-                function SliderFunc:Change(tochange)
-                    CurrentValueFrame.Size = UDim2.new((tochange or 0) / max, 0, 0, 8)
-                    Zip.Position = UDim2.new((tochange or 0) / max, -6, -0.644999981, 0)
-                    ValueLabel.Text = tostring(tochange and math.floor((tochange / max) * (max - min) + min) or 0)
-                    pcall(callback, tochange)
-                end
-            
-                ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
-                return SliderFunc
-            end
+			
+			function ChannelContent:Slider(text, min, max, start, callback)
+				local SliderFunc = {}
+				local dragging = false
+				local Slider = Instance.new("TextButton")
+				local SliderTitle = Instance.new("TextLabel")
+				local SliderFrame = Instance.new("Frame")
+				local SliderFrameCorner = Instance.new("UICorner")
+				local CurrentValueFrame = Instance.new("Frame")
+				local CurrentValueFrameCorner = Instance.new("UICorner")
+				local Zip = Instance.new("Frame")
+				local ZipCorner = Instance.new("UICorner")
+				local ValueBubble = Instance.new("Frame")
+				local ValueBubbleCorner = Instance.new("UICorner")
+				local SquareBubble = Instance.new("Frame")
+				local GlowBubble = Instance.new("ImageLabel")
+				local ValueLabel = Instance.new("TextLabel")
+
+
+				Slider.Name = "Slider"
+				Slider.Parent = ChannelHolder
+				Slider.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
+				Slider.BorderSizePixel = 0
+				Slider.Position = UDim2.new(0, 0, 0.216560602, 0)
+				Slider.Size = UDim2.new(0, 401, 0, 38)
+				Slider.AutoButtonColor = false
+				Slider.Font = Enum.Font.Gotham
+				Slider.Text = ""
+				Slider.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Slider.TextSize = 14.000
+
+				SliderTitle.Name = "SliderTitle"
+				SliderTitle.Parent = Slider
+				SliderTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SliderTitle.BackgroundTransparency = 1.000
+				SliderTitle.Position = UDim2.new(0, 5, 0, -4)
+				SliderTitle.Size = UDim2.new(0, 200, 0, 27)
+				SliderTitle.Font = Enum.Font.Gotham
+				SliderTitle.Text = text
+				SliderTitle.TextColor3 = Color3.fromRGB(127, 131, 137)
+				SliderTitle.TextSize = 14.000
+				SliderTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+				SliderFrame.Name = "SliderFrame"
+				SliderFrame.Parent = Slider
+				SliderFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+				SliderFrame.BackgroundColor3 = Color3.fromRGB(79, 84, 92)
+				SliderFrame.Position = UDim2.new(0.497999996, 0, 0.757000029, 0)
+				SliderFrame.Size = UDim2.new(0, 385, 0, 8)
+
+				SliderFrameCorner.Name = "SliderFrameCorner"
+				SliderFrameCorner.Parent = SliderFrame
+
+				CurrentValueFrame.Name = "CurrentValueFrame"
+				CurrentValueFrame.Parent = SliderFrame
+				CurrentValueFrame.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
+				CurrentValueFrame.Size = UDim2.new((start or 0) / max, 0, 0, 8)
+
+				CurrentValueFrameCorner.Name = "CurrentValueFrameCorner"
+				CurrentValueFrameCorner.Parent = CurrentValueFrame
+
+				Zip.Name = "Zip"
+				Zip.Parent = SliderFrame
+				Zip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Zip.Position = UDim2.new((start or 0)/max, -6,-0.644999981, 0)
+				Zip.Size = UDim2.new(0, 10, 0, 18)
+				ZipCorner.CornerRadius = UDim.new(0, 3)
+				ZipCorner.Name = "ZipCorner"
+				ZipCorner.Parent = Zip
+
+				ValueBubble.Name = "ValueBubble"
+				ValueBubble.Parent = Zip
+				ValueBubble.AnchorPoint = Vector2.new(0.5, 0.5)
+				ValueBubble.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+				ValueBubble.Position = UDim2.new(0.5, 0, -1.00800002, 0)
+				ValueBubble.Size = UDim2.new(0, 36, 0, 21)
+				ValueBubble.Visible = false
+				
+	
+				Zip.MouseEnter:Connect(function()
+					if dragging == false then
+						ValueBubble.Visible = true
+					end
+				end)
+				
+				Zip.MouseLeave:Connect(function()
+					if dragging == false then
+						ValueBubble.Visible = false
+					end
+				end)
+	
+
+				ValueBubbleCorner.CornerRadius = UDim.new(0, 3)
+				ValueBubbleCorner.Name = "ValueBubbleCorner"
+				ValueBubbleCorner.Parent = ValueBubble
+
+				SquareBubble.Name = "SquareBubble"
+				SquareBubble.Parent = ValueBubble
+				SquareBubble.AnchorPoint = Vector2.new(0.5, 0.5)
+				SquareBubble.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+				SquareBubble.BorderSizePixel = 0
+				SquareBubble.Position = UDim2.new(0.493000001, 0, 0.637999971, 0)
+				SquareBubble.Rotation = 45.000
+				SquareBubble.Size = UDim2.new(0, 19, 0, 19)
+
+				GlowBubble.Name = "GlowBubble"
+				GlowBubble.Parent = ValueBubble
+				GlowBubble.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				GlowBubble.BackgroundTransparency = 1.000
+				GlowBubble.BorderSizePixel = 0
+				GlowBubble.Position = UDim2.new(0, -15, 0, -15)
+				GlowBubble.Size = UDim2.new(1, 30, 1, 30)
+				GlowBubble.ZIndex = 0
+				GlowBubble.Image = "rbxassetid://4996891970"
+				GlowBubble.ImageColor3 = Color3.fromRGB(15, 15, 15)
+				GlowBubble.ScaleType = Enum.ScaleType.Slice
+				GlowBubble.SliceCenter = Rect.new(20, 20, 280, 280)
+
+				ValueLabel.Name = "ValueLabel"
+				ValueLabel.Parent = ValueBubble
+				ValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ValueLabel.BackgroundTransparency = 1.000
+				ValueLabel.Size = UDim2.new(0, 36, 0, 21)
+				ValueLabel.Font = Enum.Font.Gotham
+				ValueLabel.Text = tostring(start and math.floor((start / max) * (max - min) + min) or 0)
+				ValueLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ValueLabel.TextSize = 10.000
+				local function move(input)
+					local pos =
+						UDim2.new(
+							math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1),
+							-6,
+							-0.644999981,
+							0
+						)
+					local pos1 =
+						UDim2.new(
+							math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1),
+							0,
+							0,
+							8
+						)
+					CurrentValueFrame.Size = pos1
+					Zip.Position = pos
+					local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min)
+					ValueLabel.Text = tostring(value)
+					pcall(callback, value)
+				end
+				Zip.InputBegan:Connect(
+					function(input)
+						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+							dragging = true
+							ValueBubble.Visible = true
+						end
+					end
+				)
+				Zip.InputEnded:Connect(
+					function(input)
+						if input.UserInputType == Enum.UserInputType.MouseButton1 then
+							dragging = false
+							ValueBubble.Visible = false
+						end
+					end
+				)
+				game:GetService("UserInputService").InputChanged:Connect(
+				function(input)
+					if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+						move(input)
+					end
+				end
+				)
+				
+				function SliderFunc:Change(tochange)
+					CurrentValueFrame.Size = UDim2.new((tochange or 0) / max, 0, 0, 8)
+					Zip.Position = UDim2.new((tochange or 0)/max, -6,-0.644999981, 0)
+					ValueLabel.Text = tostring(tochange and math.floor((tochange / max) * (max - min) + min) or 0)
+					pcall(callback, tochange)
+				end
+				
+				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
+				return SliderFunc
+			end
 			function ChannelContent:Seperator()
 				local Seperator1 = Instance.new("Frame")
 				local Seperator2 = Instance.new("Frame")
@@ -2960,7 +2976,7 @@ function DiscordLib:Window(text)
 
 				Color.InputBegan:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 then
 
 							if ColorInput then
 								ColorInput:Disconnect()
@@ -2989,7 +3005,7 @@ function DiscordLib:Window(text)
 
 				Color.InputEnded:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 then
 							if ColorInput then
 								ColorInput:Disconnect()
 							end
@@ -2999,7 +3015,7 @@ function DiscordLib:Window(text)
 
 				Hue.InputBegan:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 then
 
 
 							if HueInput then
@@ -3025,7 +3041,7 @@ function DiscordLib:Window(text)
 
 				Hue.InputEnded:Connect(
 					function(input)
-						if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if input.UserInputType == Enum.UserInputType.MouseButton1 then
 							if HueInput then
 								HueInput:Disconnect()
 							end
