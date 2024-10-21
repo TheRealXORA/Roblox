@@ -1985,7 +1985,7 @@ function DiscordLib:Window(text)
 		if img == "" then
 			Server.Text = string.sub(text, 1, 1)
 		else
-			ServerIcon.Image = img
+			ServerIco.Image = img
 		end
 
 		if fs == false then
